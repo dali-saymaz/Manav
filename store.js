@@ -16,9 +16,10 @@ function AddItemCard(title, price, image) {
   cardRow.classList.add("cart-row");
   let cardItems = document.querySelector(".cart-items");
   let cardItemsNames = cardItems.getElementsByClassName("cart-item-title");
+  let cardValues = cardItems.getElementsByClassName("cart-quantity-input")
   for (let index = 0; index < cardItemsNames.length; index++) {
     if (cardItemsNames[index].innerText == title) {
-      alert(`bu ürün var sepetteki adedi degistir`);
+      cardValues[index].value ++
       return;
     }
   }
