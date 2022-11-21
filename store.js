@@ -37,6 +37,7 @@ function AddItemCard(title, price, image) {
     .getElementsByClassName("btn-danger")[0]
     .addEventListener("click", removeItem);
   cardRow.getElementsByClassName("cart-quantity-input")[0].addEventListener("change", inputChange)
+  lastPrice()
 }
 let buttonDelete = document.getElementsByClassName("btn-danger");
 for (let index = 0; index < buttonDelete.length; index++) {
@@ -44,11 +45,25 @@ for (let index = 0; index < buttonDelete.length; index++) {
 }
 function removeItem(pParam) {
   pParam.target.parentElement.parentElement.remove();
+  lastPrice()
 }
 
 function inputChange(pParam) {
   if (isNaN(pParam.target.value)|| pParam.target.value<=0) {
     pParam.target.value=1
   }
+  lastPrice()
 }
 
+function lastPrice() {
+  let cartRow= document.getElementsByClassName("cart-items")[0].getElementsByClassName("cart-row")
+  let total=0;
+  for (let index = 0; index < cartRow.length; index++) {
+    let price= cartRow[index].getElementsByClassName("cart-price")[0]
+    let input=cartRow[index].getElementsByClassName("cart-quantity-input")[0]
+    let priceNumber=Number(price.innerText.replace("$", ""))
+    total=total+priceNumber*input.value
+  }
+  total=Math.round(total*100)/100
+  document.getElementsByClassName("cart-total-price")[0].innerText=`$${total}`
+} 
