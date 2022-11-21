@@ -11,14 +11,16 @@ function addToCardBoxProduct(params) {
   let image = shopItem.getElementsByClassName("shop-item-image")[0].src;
   AddItemCard(title, price, image);
 }
+
 function AddItemCard(title, price, image) {
   let cardRow = document.createElement("div");
   cardRow.classList.add("cart-row");
   let cardItems = document.querySelector(".cart-items");
   let cardItemsNames = cardItems.getElementsByClassName("cart-item-title");
+  let cardValues = cardItems.getElementsByClassName("cart-quantity-input")
   for (let index = 0; index < cardItemsNames.length; index++) {
     if (cardItemsNames[index].innerText == title) {
-      alert(`bu ürün var sepetteki adedi degistir`);
+      cardValues[index].value ++
       return;
     }
   }
@@ -34,3 +36,14 @@ function AddItemCard(title, price, image) {
   cardRow.innerHTML = cardRowContent;
   cardItems.append(cardRow);
 }
+
+/* REMOVE BUTTON */
+let removeButtons = document.getElementsByClassName("btn-danger")
+
+for (let index = 0; index < removeButtons.length; index++) {
+  console.log(index)
+  removeButtons[index].addEventListener("click", function(p){
+    p.target.parentElement.parentElement.remove()
+  })
+}
+
