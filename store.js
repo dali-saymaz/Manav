@@ -47,14 +47,12 @@ function removeItem(pParam) {
   pParam.target.parentElement.parentElement.remove();
   lastPrice()
 }
-
 function inputChange(pParam) {
   if (isNaN(pParam.target.value)|| pParam.target.value<=0) {
     pParam.target.value=1
   }
   lastPrice()
 }
-
 function lastPrice() {
   let cartRow= document.getElementsByClassName("cart-items")[0].getElementsByClassName("cart-row")
   let total=0;
