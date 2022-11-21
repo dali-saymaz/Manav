@@ -28,9 +28,27 @@ function AddItemCard(title, price, image) {
    </div>
    <span class="cart-price cart-column">${price}</span>
    <div class="cart-quantity cart-column">
-      <input class="cart-quantity-input" type="number" value="1">
+      <input class="cart-quantity-input"  value="1">
       <button class="btn btn-danger" type="button">REMOVE</button>
    </div>`;
   cardRow.innerHTML = cardRowContent;
   cardItems.append(cardRow);
+  cardRow
+    .getElementsByClassName("btn-danger")[0]
+    .addEventListener("click", removeItem);
+  cardRow.getElementsByClassName("cart-quantity-input")[0].addEventListener("change", inputChange)
 }
+let buttonDelete = document.getElementsByClassName("btn-danger");
+for (let index = 0; index < buttonDelete.length; index++) {
+  buttonDelete[index].addEventListener("click", removeItem);
+}
+function removeItem(pParam) {
+  pParam.target.parentElement.parentElement.remove();
+}
+
+function inputChange(pParam) {
+  if (isNaN(pParam.target.value)|| pParam.target.value<=0) {
+    pParam.target.value=1
+  }
+}
+
