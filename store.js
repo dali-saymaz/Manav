@@ -16,9 +16,10 @@ function AddItemCard(title, price, image) {
   cardRow.classList.add("cart-row");
   let cardItems = document.querySelector(".cart-items");
   let cardItemsNames = cardItems.getElementsByClassName("cart-item-title");
+  let cardValues = cardItems.getElementsByClassName("cart-quantity-input")
   for (let index = 0; index < cardItemsNames.length; index++) {
     if (cardItemsNames[index].innerText == title) {
-      alert(`bu ürün var sepetteki adedi degistir`);
+      cardValues[index].value ++
       return;
     }
   }
@@ -30,6 +31,7 @@ function AddItemCard(title, price, image) {
    <div class="cart-quantity cart-column">
       <input class="cart-quantity-input"  value="1">
       <button class="btn btn-danger" type="button">REMOVE</button>
+      <p>Haydi Al</p>
    </div>`;
   cardRow.innerHTML = cardRowContent;
   cardItems.append(cardRow);
