@@ -12,7 +12,7 @@ function addToCardBoxProduct(params) {
   AddItemCard(title, price, image);
 }
 function AddItemCard(title, price, image) {
-  let cardRow = document.createElement("div");
+  var cardRow = document.createElement("div");
   cardRow.classList.add("cart-row");
   let cardItems = document.querySelector(".cart-items");
   let cardItemsNames = cardItems.getElementsByClassName("cart-item-title");
