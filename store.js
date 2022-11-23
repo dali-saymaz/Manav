@@ -31,7 +31,7 @@ function AddItemCard(title, price, image) {
    <div class="cart-quantity cart-column">
       <input class="cart-quantity-input"  value="1">
       <button class="btn btn-danger" type="button">REMOVE</button>
-      <p>Haydi Al</p>
+      <p>Alma</p>
    </div>`;
   cardRow.innerHTML = cardRowContent;
   cardItems.append(cardRow);
