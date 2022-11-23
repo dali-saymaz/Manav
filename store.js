@@ -35,15 +35,23 @@ function AddItemCard(title, price, image) {
    </div>`;
   cardRow.innerHTML = cardRowContent;
   cardItems.append(cardRow);
+  cardRow.getElementsByClassName("btn-danger")[0].addEventListener("click", deleteItem)
+  cardRow.getElementsByClassName("cart-quantity-input")[0].addEventListener("change", inputChange)
 }
 
 /* REMOVE BUTTON */
-let removeButtons = document.getElementsByClassName("btn-danger")
+let removeButtons = document.querySelectorAll("btn-danger")
 
 for (let index = 0; index < removeButtons.length; index++) {
   console.log(index)
-  removeButtons[index].addEventListener("click", function(p){
-    p.target.parentElement.parentElement.remove()
-  })
+  removeButtons[index].addEventListener("click", deleteItem)
+}
+function deleteItem(p){
+  p.target.parentElement.parentElement.remove()
 }
 
+function inputChange(pParam){
+  if(isNan(pParam.target.value) || pParam.target.value<0){
+
+  }
+}
